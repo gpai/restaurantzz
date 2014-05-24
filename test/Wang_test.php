@@ -53,8 +53,7 @@ curl_close($ch);
 $response = json_decode($data);
 
 // Print it for debugging
-print_r($response);
-
+var_dump($response);
 ?>
 
 	</body>
