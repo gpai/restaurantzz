@@ -14,8 +14,9 @@
 // Enter the path that the oauth library is in relation to the php file
 require_once ('lib/OAuth.php');
 
+$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento";
 // For examaple, search for 'tacos' in 'sf'
-$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
+//$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
 
 
 // Set your keys here
