@@ -1,0 +1,22 @@
+[2014-05-24 04:10:05] production.ERROR: exception 'Exception' with message 'This PHP binary is not version 5.4 or greater.' in C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\laravel\framework\src\Illuminate\Foundation\Console\ServeCommand.php:55
+Stack trace:
+#0 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\laravel\framework\src\Illuminate\Foundation\Console\ServeCommand.php(29): Illuminate\Foundation\Console\ServeCommand->checkPhpVersion()
+#1 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\laravel\framework\src\Illuminate\Console\Command.php(108): Illuminate\Foundation\Console\ServeCommand->fire()
+#2 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\symfony\console\Symfony\Component\Console\Command\Command.php(241): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\laravel\framework\src\Illuminate\Console\Command.php(96): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\symfony\console\Symfony\Component\Console\Application.php(885): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\symfony\console\Symfony\Component\Console\Application.php(191): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Foundation\Console\ServeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\symfony\console\Symfony\Component\Console\Application.php(121): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\artisan(59): Symfony\Component\Console\Application->run()
+#8 {main} [] []
+[2014-05-24 04:44:46] production.ERROR: exception 'Exception' with message 'This PHP binary is not version 5.4 or greater.' in C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\laravel\framework\src\Illuminate\Foundation\Console\ServeCommand.php:55
+Stack trace:
+#0 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\laravel\framework\src\Illuminate\Foundation\Console\ServeCommand.php(29): Illuminate\Foundation\Console\ServeCommand->checkPhpVersion()
+#1 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\laravel\framework\src\Illuminate\Console\Command.php(108): Illuminate\Foundation\Console\ServeCommand->fire()
+#2 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\symfony\console\Symfony\Component\Console\Command\Command.php(241): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\laravel\framework\src\Illuminate\Console\Command.php(96): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\symfony\console\Symfony\Component\Console\Application.php(885): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\symfony\console\Symfony\Component\Console\Application.php(191): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Foundation\Console\ServeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\vendor\symfony\console\Symfony\Component\Console\Application.php(121): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 C:\Users\Grace Pai\Desktop\Spring2014\Hackathon\restaurantzz\artisan(59): Symfony\Component\Console\Application->run()
+#8 {main} [] []
