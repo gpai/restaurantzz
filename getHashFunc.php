@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 	<head>
@@ -44,3 +45,14 @@
 	?>
 	</body>
 </html>
+=======
+<?php
+	require_once('twitterCall.php');
+	
+	//associate $n with the hashtag.
+	$n = getHash('hackuci', '33.683947,-117.794694,20mi');
+
+	
+	include "getHashFunc.phtml";
+?>
+>>>>>>> d2afa414348fadd4414753e74fb52b50c53fad33

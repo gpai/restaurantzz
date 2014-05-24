@@ -94,7 +94,7 @@ class TwitterAPIExchange
         $string = str_replace($search, $replace, $string);  
         
         $this->getfield = $string;
-        
+
         return $this;
     }
     
