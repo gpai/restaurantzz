@@ -1,0 +1,21 @@
+body{
+	background-color: #000000;
+}
+
+#map_canvas{
+	width: 800px;
+	height: 400px;
+	background-color: #CCCCCC;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#title{
+    text-align: center;
+    font-size: 51px;
+    color: #FFFFFF;
+    padding: 1em 10%;
+}
