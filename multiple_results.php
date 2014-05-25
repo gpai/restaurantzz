@@ -30,13 +30,13 @@
 			}
 		}
 		//print for debugging us only
-		foreach($list as $liss){
+		/*foreach($list as $liss){
 			echo $liss["name"].'</br>';
 			echo $liss["hashtag"].'</br>';
 			echo $liss["address"].'</br>';
 			echo $liss["url"].'</br>';
 			echo $liss["score"].'</br>'.'</br>';
-		}	
+		}*/	
 	}
 	include 'multiple_results.phtml';
 ?>
