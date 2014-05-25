@@ -18,7 +18,9 @@
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+		<script src="//maps.googleapis.com/maps/api/js?sensor=false&language=en&region=US"></script>
   </head>
   <body>
   	<div id="navigationBar" style="padding-top:30px" class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -37,14 +39,64 @@
 					<input class="form-control tt-query" type="text" style="position: relative; display:inline; vertical-align: top; background-color: transparent; width: 500px; bottom:1px" id="locationQuery" name ="location" placeholder="Enter A Location"> 
 					<input type="hidden" id="latitude" name="lat" />
 	  				<input type="hidden" id="longitude" name="long" /> 
-	  				<input type="submit" value="Search" onclick="getLatLong()" class="btn btn-primary btn-large" style="position: relative; display:inline;" />
+	  				<input type="button" value="Search" onclick="getLatLong()" class="btn btn-primary btn-large" style="position: relative; display:inline;" />
 				</div>
 			</form>
 		</center>
 	</div><!-- /.container -->
 	
- 	<div id='map_canvas'></div>
+ 	<div class="mapTemplate" id= "map" style="margin:0 0;width:75%;	height: 600px;border:black; display: inline;float:left"></div>
+ 	<?php if(count($yelp) != 0){ ?>
+ 		<script type="text/javascript">
+ 			directionsDisplay = new google.maps.DirectionsRenderer();
+			var latlng=new google.maps.LatLng(<?php echo $lat?>,<?php echo $long ?>);
+			var myOptions = {
+				zoom:16,
+				center: latlng,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			map = new google.maps.Map(document.getElementById('map'), myOptions);
+
+			var geocoder = new google.maps.Geocoder();
+			
+			
+			<?php
+				for($i = 0; $i < count($location); $i++)
+				{
+					echo 'addPinByAddress("' . $location[$i] . '");
+					';
+				}
+			?>
+			
+			function addPinByAddress(address)
+			{
+				geocoder.geocode( { 'address': address}, function(results, status) {
+			      if (status == google.maps.GeocoderStatus.OK) {
+			        map.setCenter(results[0].geometry.location);
+			        var marker = new google.maps.Marker({
+			            map: map,
+			            position: results[0].geometry.location
+			        });
+			      } else {
+			      	if(status.indexOf("OVER_QUERY_LIMIT") == -1)
+			      		return;
+			        alert("Geocode was not successful for the following reason: " + status);
+			      }
+			    });
+			}
+			
+			
+ 		</script>
  	
+ 	<?php } else {?>
+		<script src="task.js"></script>
+ 	<?php } ?>	
+	 <div style="margin:0 0;width:20%; float:right;	height: 600px;border:black; display: inline;">
+		<?php foreach($yelp as $index=>$yell){
+			echo ($index+1).'. <a href="'.$yell['url'].'">'.$yell['name'].'</a><br>';
+		}
+		?>
+	</div>
 	<script type="text/javascript">
 		function getLatLong(){
 			var address = document.getElementById('locationQuery').value;
@@ -70,6 +122,7 @@
        		});
   		}
 	</script>
+	
     <!-- Load JS here for greater good =============================-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="Flat-UI-Pro-1.2.5/js/jquery-1.8.3.min.js"></script>
