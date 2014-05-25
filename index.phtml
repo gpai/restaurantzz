@@ -19,7 +19,7 @@
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
-	
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
   </head>
   <body>
   <div id="box">
@@ -43,19 +43,19 @@
 			<form action="" method= "get" id="createQuery">
 				<div class="form-group">
 					<span class="twitter-typehead" style="position:relative; display:inline-block;">
-						<input class="form-control tt-query" type="text" style="position: relative; vertical-align: top; background-color: transparent; width: 500px; bottom:17px" id="locationQuery" name ="location" placeholder="Enter Location"> 
+						<input class="form-control tt-query" type="text" style="position: relative; vertical-align: top; background-color: transparent; width: 500px; bottom:4px" id="locationQuery" name ="location" placeholder="Enter Location"> 
 						<input type="hidden" id="latitude" name="lat" />
 	  					<input type="hidden" id="longitude" name="long" /> 
-	  					<input type="submit" value="Search" onclick="getLatLong()" class="btn btn-primary btn-hg" style="postion: relative; vertical-align:top;" />
+	  					<input type="submit" value="Search" onclick="getLatLong()" class="btn btn-primary btn-hg" style="postion: relative; vertical-align:top; border-bottom: 20px;" />
 				</div>
 			</form>
 		</center>
 	</div><!-- /.container -->
 	
-	<div id='map_canvas'></div>
+	<div id='map'></div>
 
 </div>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+	
 	<script type="text/javascript">
 		function getLatLong(){
 			var address = document.getElementById('locationQuery').value;
