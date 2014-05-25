@@ -1,35 +1,42 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		
+
 	</head>
 	<body>
 
 <?php
-
 //
 // From http://non-diligent.com/articles/yelp-apiv2-php-example/
 //
 
 
 // Enter the path that the oauth library is in relation to the php file
-require_once ('lib/OAuth.php');
+require_once ("OAuth.php");
 
+
+// For example, request business with id 'the-waterboy-sacramento'
 $unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento";
+
+
 // For examaple, search for 'tacos' in 'sf'
 //$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
 
 
 // Set your keys here
-$consumer_key = "70bjnshjp6RQN9qfa2XUA";
+$consumer_key = "-70bjnshjp6RQN9qfa2XUA";
 $consumer_secret = "0SrpFUKEW4HfKgHc9dJf7wnnNt0";
-$token = "b0FBfZJHZ0wQAZJtU6o3GxNdDeZMDttm";
-$token_secret = "HyfmYChMNiHnUhiMS235cPiOpkc";
+$token = "KMzsSQ6XlaKxhYHHMOgfjgoiAbZju6pb";
+$token_secret = "x76OHiyfEeuLVBJhTlKT9_t1Mv8";
+
 
 // Token object built using the OAuth library
-$token = new OAuthToken($token, $token_secret);
+$A_token = new OAuthToken($token, $token_secret);
+ echo "2";
 
 // Consumer object built using the OAuth library
 $consumer = new OAuthConsumer($consumer_key, $consumer_secret);
+ echo "2";
 
 // Yelp uses HMAC SHA1 encoding
 $signature_method = new OAuthSignatureMethod_HMAC_SHA1();
@@ -54,8 +61,8 @@ curl_close($ch);
 $response = json_decode($data);
 
 // Print it for debugging
-var_dump($response);
-?>
+print_r($response);
 
+?>
 	</body>
 </html>

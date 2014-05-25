@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurantzz</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  </head>
+  <body>
+  	<div id="error">
+		<?php
+			if (! empty ( $errorArray )) {
+				foreach ( $errorArray as $error ) { ?><h4> <?php
+					echo $error ?></h4><br><?php
+				}
+			}
+		?>
+	</div>
+    <form action="" method= "post" id="createQuery">
+      <input name ="location" type="text" placeholder="Input Address" size="90" placeholder="Enter Location" />
+      <input id="find" type="submit" value="Search" />
+    </form>
+  
+  </body>
+</html>
+
