@@ -31,7 +31,7 @@ $token_secret = "x76OHiyfEeuLVBJhTlKT9_t1Mv8";
 
 
 // Token object built using the OAuth library
-$A_token = new OAuthToken($token, $token_secret);
+$token = new OAuthToken($token, $token_secret);
  echo "2";
 
 // Consumer object built using the OAuth library
@@ -58,7 +58,7 @@ $data = curl_exec($ch); // Yelp response
 curl_close($ch);
 
 // Handle Yelp response data
-$response = json_decode($data);
+$response = json_decode($data, true);
 
 // Print it for debugging
 print_r($response);
