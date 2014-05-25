@@ -5,7 +5,7 @@
 	require_once('yelpTest.php');
 	require_once('twitterCall.php');
 	
-	class Location{
+	class location{
 		
 		private $city;
 		private $lat;
@@ -14,25 +14,21 @@
 		private $yelp;
 		private $twit;
 		
-		public function __construct($c, $la, $lo){
-			$city = $c;
-			$lat = $la;
-			$long = $lo;
+		public function __construct($city, $lat, $long){
+			$this->city = $city;
+			$this->lat = $lat;
+			$this->long = $long;
 		}
 		
-		public function fillYelp($lat, $long){
-			$list = yelp($lat,$long); //this get the closest 40 restuarnts with the given lat & long
-			
+		public function fillYelpTwit(){
+			$list = yelp($this->lat, $this->long); //this get the closest 40 restuarnts with the given lat & long
+			$listTwit = twitter($list, $this->lat, $this->long);
+						
 			for($i = 0; $i < sizeOf($list); $i++){
-				$yelp[$i] = $list[$i]["name"].$list[$i]["hashtag"].$list[$i]["address"].$list[$i]["url"].$list[$i]["score"];
+				$this->yelp[$i] = $list[$i]["name"]."*".$list[$i]["hashtag"]."*".$list[$i]["address"]."*".$list[$i]["url"]."*".$list[$i]["score"];
 			}
-		}
-		
-		public function fillTwit($list, $lat, $long){
-			$list = twitter($list, $lat, $long); //this ranks the 40 restuarnts with the yelp list
-			
-			for($i = 0; $i < sizeOf($list); $i++){
-				$twit[$i] = $list[$i]["score"];
+			for($i = 0; $i < sizeOf($listTwit); $i++){
+				$this->twit[$i] = $listTwit[$i]["score"];
 			}
 		}
 		
