@@ -1,25 +1,77 @@
 <!DOCTYPE html>
 <html> 
-<head>
-</head>
-<body>
-  
-	
-	<?php
-		$list = 'poo';
-		echo $list;
-	?>
+	<head> 
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+	  	<title>Restaurantzz:  The z's are accented</title> 
+	  	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	  	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
+	</head>
+	 
+	<body>
+  		<div id="map" style="width: 100%; height: 800px;"></div>
 
-  <!--<script type="text/javascript">
-    // Define your locations: HTML content for the info window, latitude, longitude
-	var locations = [
-      ['<h4>Bondi Beach</h4>', -33.890542, 151.274856],
-      ['<h4>Coogee Beach</h4>', -33.923036, 151.259052],
-      ['<h4>Cronulla Beach</h4>', -34.028249, 151.157507],
-      ['<h4>Manly Beach</h4>', -33.80010128657071, 151.28747820854187],
-      ['<h4>Maroubra Beach</h4>', -33.950198, 151.259302]
-    ];
-	
+		<?php  
+			$list = array(
+				array(
+					"name"=>"Outback Steakhouse",
+					"hashtag" =>"OutbackSteakhouse",
+					"address" =>"15433 Culver Dr Irvine, CA 92604",
+					"url" =>"www.outback.com",
+					"score" => 4
+				),
+				array(
+					"name"=>"BJs",
+					"hashtag" =>"BJs",
+					"address" =>"13130 Jamboree Rd Irvine, CA 92602",
+					"url" =>"www.bjrestaurants.com",
+					"score" => 2
+				),
+				array(
+					"name"=>"Outback Steakhouse",
+					"hashtag" =>"OutbackSteakhouse",
+					"address" =>"15433 Culver Dr Irvine, CA 92604",
+					"url" =>"www.outback.com",
+					"score" => 2
+				),
+				array(
+					"name"=>"Little Sheep Mongolian Hotpot",
+					"hashtag" =>"LittleSheepMongolianHotpot",
+					"address" =>"15361 Culver Dr Irvine, CA 92604",
+					"url" =>"www.littlesheephotpot.com",
+					"score" => 1
+				)
+			); 
+			
+			//make size = 10
+			if(sizeOf($list)< 10){
+				for($i = sizeOf($list); $i < 10; $i++){
+					$list[$i]["name"] = 'no';
+					$list[$i]["hashtag"] = 'no';
+					$list[$i]["address"] = 'no';
+					$list[$i]["url"] = 'no';
+					$list[$i]["score"] = 'no';
+				}
+			}
+		?>
+		
+		
+		<script type="text/javascript">
+	  		// Define your locations: HTML content for the info window, latitude, longitude
+    		var locations = [
+      			['<h4><?php echo $list[0]["name"]; ?></h4>', -33.890542, 151.274856, '<?php echo $list[0]["address"]; ?>', '<h2><?php echo $list[0]["url"]; ?></h2>'],
+      			['<h4><?php echo $list[1]["name"]; ?></h4>', -33.923036, 151.259052, '<?php echo $list[1]["address"]; ?>', '<h2><?php echo $list[1]["url"]; ?></h2>'],
+      			['<h4><?php echo $list[2]["name"]; ?></h4>', -34.028249, 151.157507, '<?php echo $list[2]["address"]; ?>', '<h2><?php echo $list[2]["url"]; ?></h2>'],
+      			['<h4><?php echo $list[3]["name"]; ?></h4>', -33.80010128657071, 151.28747820854187, '<?php echo $list[3]["address"]; ?>', '<h2><?php echo $list[3]["url"]; ?></h2>'],
+      			['<h4><?php echo $list[4]["name"]; ?></h4>', -33.81010128657071, 151.28747820854187, '<?php echo $list[4]["address"]; ?>', '<h2><?php echo $list[4]["url"]; ?></h2>'],
+      			['<h4><?php echo $list[5]["name"]; ?></h4>', -33.82010128657071, 151.28747820854187, '<?php echo $list[5]["address"]; ?>', '<h2><?php echo $list[5]["url"]; ?></h2>'],
+      			['<h4><?php echo $list[6]["name"]; ?></h4>', -33.83010128657071, 151.28747820854187, '<?php echo $list[6]["address"]; ?>', '<h2><?php echo $list[6]["url"]; ?></h2>'],
+      			['<h4><?php echo $list[7]["name"]; ?></h4>', -33.84010128657071, 151.28747820854187, '<?php echo $list[7]["address"]; ?>', '<h2><?php echo $list[7]["url"]; ?></h2>'],
+      			['<h4><?php echo $list[8]["name"]; ?></h4>', -33.85010128657071, 151.28747820854187, '<?php echo $list[8]["address"]; ?>', '<h2><?php echo $list[8]["url"]; ?></h2>'],
+      			['<h4><?php echo $list[9]["name"]; ?></h4>', -33.86010128657071, 151.28747820854187, '<?php echo $list[9]["address"]; ?>', '<h2><?php echo $list[9]["url"]; ?></h2>']
+    		];
+
+    		
+    
     // Setup the different icons and shadows
     var iconURLPrefix = 'http://maps.google.com/mapfiles/ms/icons/';
     
@@ -42,14 +94,11 @@
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
-      center: new google.maps.LatLng(-37.92, 151.25),
+      center: new google.maps.LatLng(33.68, -117.79),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: false,
       streetViewControl: false,
       panControl: false,
-      zoomControlOptions: {
-         position: google.maps.ControlPosition.LEFT_BOTTOM
-      }
     });
 
     var infowindow = new google.maps.InfoWindow({
@@ -62,14 +111,26 @@
     var iconCounter = 0;
     
     // Add the markers and infowindows to the map
-    for (var i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map,
-        icon : icons[iconCounter],
-        shadow: shadow
-      });
-
+    for (var i = 0; i < locations.length; i++) {
+    	var latitude;
+    	var longitude; 
+	  if (locations[i][0] != "<h4>no</h4>"){  
+	  	var geocoder = new google.maps.Geocoder();
+	  	var address = locations[i][3];
+	  	geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+			    latitude = results[0].geometry.location.lat();
+			    longitude = results[0].geometry.location.lng();
+		    } 
+		}); 
+		console.log(latitude);
+	      marker = new google.maps.Marker({
+	        position: new google.maps.LatLng(locations[i][1], locations[i][2]),		//locations[i][1], locations[i][2]
+	        map: map,
+	        icon : icons[iconCounter],
+	        shadow: shadow
+	      });
+	
       markers.push(marker);
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -84,6 +145,7 @@
       if(iconCounter >= icons_length){
       	iconCounter = 0;
       }
+     }
     }
 
     function AutoCenter() {
@@ -97,6 +159,6 @@
       map.fitBounds(bounds);
     }
     AutoCenter();
-  </script>-->
+  </script> 
 </body>
 </html>
