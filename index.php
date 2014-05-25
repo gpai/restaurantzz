@@ -17,9 +17,9 @@
 		$list = twitter($list, $lat, $long); //this ranks the 40 restuarnts with the yelp list
 		
 		//this sorts the list by rank
-		for($i = 0; $i < 40; $i++)
+		for($i = 0; $i < 20; $i++)
 		{
-			for($j = 0; $j < 39 - $i; $j++)
+			for($j = 0; $j < 19 - $i; $j++)
 			{
 				if( $list[$j]["score"] < $list[$j+1]["score"]  )
 				{
