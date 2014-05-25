@@ -36,7 +36,7 @@
 			echo $liss["address"].'</br>';
 			echo $liss["url"].'</br>';
 			echo $liss["score"].'</br>'.'</br>';
-		}*/
+		}*/	
 	}
-	include 'index.phtml';
+	include 'newIndex.phtml';
 ?>

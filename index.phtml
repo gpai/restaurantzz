@@ -1,78 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Place Autocomplete</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    
+    <title>Restaurantzz homie</title>
+   	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Loading Bootstrap -->
     <link href="Flat-UI-Pro-1.2.5/css/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Loading Flat UI -->
     <link href="Flat-UI-Pro-1.2.5/css/flat-ui.css" rel="stylesheet">
-    
-    <!-- Individual CSS -->
-    <link href="css/index.css" rel="stylesheet">
-    
-    <!-- Google Maps Scripts -->
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-	<script src="map.js"></script>
+	<link href="css/teststyle.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
 	
   </head>
   <body>
+  <div id="box">
+  	<div id="navigationBar" style="padding-top:30px" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="navbar-header">
+          	<a class="navbar-brand" href="index.php">restaurantzz</a>
+        </div>
+        
+        <div class="navbar-collapse collapse navbar-right">
+          <ul class="nav navbar-nav "><!-- No content -->
+          </ul>
+          <ul style="display: inline-block; float:right;" class="nav navbar-nav navbar-right">
+				<a class="nav-list" style="color:#FFFFFF;" href="about.phtml">about</a>		
+				<a class="nav-list" style="color:#FFFFFF;" href="team.phtml">team</a>  
+          </ul>
+        </div><!--/.nav-collapse -->
+	</div><!--/.navbar  -->
   	
-    <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location">
-    <div id="map"></div>
-   
+	<div id="search" class="container">
+		<center>
+			<form action="" method= "get" id="createQuery">
+				<div class="form-group">
+					<span class="twitter-typehead" style="position:relative; display:inline-block;">
+						<input class="form-control tt-query" type="text" style="position: relative; vertical-align: top; background-color: transparent; width: 500px; bottom:17px" id="locationQuery" name ="location" placeholder="Enter Location"> 
+						<input type="hidden" id="latitude" name="lat" />
+	  					<input type="hidden" id="longitude" name="long" /> 
+	  					<input type="submit" value="Search" onclick="getLatLong()" class="btn btn-primary btn-hg" style="postion: relative; vertical-align:top;" />
+				</div>
+			</form>
+		</center>
+	</div><!-- /.container -->
+	
+	<div id='map_canvas'></div>
 
- 
-<script type="text/javascript"> 
-jQuery(document).ready(function() {
- 
-	 Load google map
-	var map = new google.maps.Map( document.getElementById("gmap"),  {
-		center: new google.maps.LatLng(0,0),
-		zoom: 3,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		panControl: false,
-		streetViewControl: false,
-		mapTypeControl: false
-	});
- 
- 
-	//jQuery('input[name=search]').click(function() {
- 
-		var geocoder = new google.maps.Geocoder(); 
-		geocoder.geocode({
-				address : jQuery('results[name=address]').val(), 
-				region: 'no' 
-			},
-		    function(results, status) {
-		    	if (status.toLowerCase() == 'ok') {
-					// Get center
-					var coords = new google.maps.LatLng(
-						results[0]['address'].lat(),
-						results[0]['address'].lng()
-					);
-					jQuery('#coords').html('Latitute: ' + coords.lat() + '    Longitude: ' + coords.lng() );
- consol.log(coords);
-					map.setCenter(coords);
-					map.setZoom(18);
- 
-					// Set marker also
-					marker = new google.maps.Marker({
-						position: coords, 
-						map: map, 
-						title: jQuery('input[name=address]').val(),
-					});
- 
-		    	}
-			}
-		);
-	});
- 
-});
- </script>
+</div>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+	<script type="text/javascript">
+		function getLatLong(){
+			var address = document.getElementById('locationQuery').value;
+			var geo = new google.maps.Geocoder;
+  			geo.geocode({'address':address},function(results, status){
+     		     if (status == google.maps.GeocoderStatus.OK) {
+      		        document.getElementById('latitude').value = results[0].geometry.location['k'];
+           		   	document.getElementById('longitude').value = results[0].geometry.location['A'];
+              	
+           		   	// console.log(results,status);
+          		    //console.log('latitude: '+encodeURI(document.getElementById('latitude').value));
+         		    //console.log('longitude: '+encodeURI(document.getElementById('longitude').value));
+            	
+              		// console.log(results[0].geometry.location['k']); //longitude -> don't use this - use the two above
+              		// console.log(results[0].geometry.location['A']); //latitude -> don't use this- use the two above
+              	
+              		document.getElementById("createQuery").submit();
+         		 } else {
+            		//alert("Geocode was not successful for the following reason: " + status);
+            		alert("Ooops, something went wrong. Please input another location.");
+             	 }
+
+       		});
+  		}
+	</script>
+    <!-- Load JS here for greater good =============================-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/js/jquery-1.8.3.min.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/js/bootstrap.min.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/js/bootstrap-select.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/js/bootstrap-switch.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/js/flatui-checkbox.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/js/flatui-radio.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/s/jquery.tagsinput.js"></script>
+    <script src="Flat-UI-Pro-1.2.5/css/js/jquery.placeholder.js"></script>
   </body>
 </html>
