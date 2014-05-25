@@ -14,32 +14,43 @@
 		private $yelp;
 		private $twit;
 		
-		public function __construct($c, $la, $lo){
-			$city = $c;
-			$lat = $la;
-			$long = $lo;
+		public function __construct($city, $lat, $long){
+			$this->city = $city;
+			$this->lat = $lat;
+			$this->long = $long;
 		}
 		
-		public function getYelp($lat, $long){
-			$list = yelp($lat,$long); //this get the closest 40 restuarnts with the given lat & long
-			
-			$liststr = $list[0]["name"].$list[0]["hashtag"].$list[0]["address"].$list[0]["url"].$list[0]["score"];
-			
-			
+		public function fillYelpTwit(){
+			$list = yelp($this->lat, $this->long); //this get the closest 40 restuarnts with the given lat & long
+			$listTwit = twitter($list, $this->lat, $this->long);
 						
-					
-					
-					"name" => $name, 
-					"hashtag" => convertToHash($name), 
-					"address" => $address.' '.$city." ".$state.", ".$postal,
-					"url" => $url, 
-					"score" => 0			
+			for($i = 0; $i < sizeOf($list); $i++){
+				$this->yelp[$i] = $list[$i]["name"]."*".$list[$i]["hashtag"]."*".$list[$i]["address"]."*".$list[$i]["url"]."*".$list[$i]["score"];
+			}
+			for($i = 0; $i < sizeOf($listTwit); $i++){
+				$this->twit[$i] = $listTwit[$i]["score"];
+			}
 		}
 		
-		public function getTwit($list, $lat, $long){
-			$list = twitter($list, $lat, $long); //this ranks the 40 restuarnts with the yelp list
+		public function getCity(){
+			return $city;
 		}
 		
+		public function getLat(){
+			return $lat;
+		}
+		
+		public function getLong(){
+			return $long;
+		}
+		
+		public function getYelp(){
+			return $yelp;
+		}
+		
+		public function getTwit(){
+			return $twit;
+		}
 	}
 
 ?>
