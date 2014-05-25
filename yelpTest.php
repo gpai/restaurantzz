@@ -92,7 +92,7 @@
 			//init and populate list with first 3 pages
 			$list = array();
 			$list = getRest($lat, $long, 0, $list);
-			$list = getRest($lat, $long, 20, $list);
+			//$list = getRest($lat, $long, 20, $list);
 			
 			//debuggin code
 			/*for ($i = 0; $i < 40; $i++){
