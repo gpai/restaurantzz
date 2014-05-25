@@ -22,11 +22,11 @@
 	}
 	
 	//print for debugging us only
-	/*for ($i = 0; $i < 40; $i++){
+	for ($i = 0; $i < 40; $i++){
 		echo $list[$i]["name"].'</br>';
 		echo $list[$i]["hashtag"].'</br>';
 		echo $list[$i]["address"].'</br>';
 		echo $list[$i]["url"].'</br>';
 		echo $list[$i]["score"].'</br>'.'</br>';
-	}*/	
+	}	
 ?>
