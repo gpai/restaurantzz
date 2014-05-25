@@ -4,9 +4,12 @@
 	require_once('OAuth.php');
 	require_once('yelpTest.php');
 	require_once('twitterCall.php');
+	require_once('test.php');
+	
+	$irvObj = new Location();
 	
 	$list = yelp(33.8741025, -117.7364668);
-	$list = twitter($list, 33.8741025, -117.7364668);
+	//$list = twitter($list, 33.8741025, -117.7364668);
 	
 	for($i = 0; $i < 40; $i++)
 	{

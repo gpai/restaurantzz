@@ -5,7 +5,7 @@
 	require_once('yelpTest.php');
 	require_once('twitterCall.php');
 	
-	class location{
+	class Location{
 		
 		private $city;
 		private $lat;
@@ -20,26 +20,41 @@
 			$long = $lo;
 		}
 		
-		public function getYelp($lat, $long){
+		public function fillYelp($lat, $long){
 			$list = yelp($lat,$long); //this get the closest 40 restuarnts with the given lat & long
 			
-			$liststr = $list[0]["name"].$list[0]["hashtag"].$list[0]["address"].$list[0]["url"].$list[0]["score"];
-			
-			
-						
-					
-					
-					"name" => $name, 
-					"hashtag" => convertToHash($name), 
-					"address" => $address.' '.$city." ".$state.", ".$postal,
-					"url" => $url, 
-					"score" => 0			
+			for($i = 0; $i < sizeOf($list); $i++){
+				$yelp[$i] = $list[$i]["name"].$list[$i]["hashtag"].$list[$i]["address"].$list[$i]["url"].$list[$i]["score"];
+			}
 		}
 		
-		public function getTwit($list, $lat, $long){
+		public function fillTwit($list, $lat, $long){
 			$list = twitter($list, $lat, $long); //this ranks the 40 restuarnts with the yelp list
+			
+			for($i = 0; $i < sizeOf($list); $i++){
+				$twit[$i] = $list[$i]["score"];
+			}
 		}
 		
+		public function getCity(){
+			return $city;
+		}
+		
+		public function getLat(){
+			return $lat;
+		}
+		
+		public function getLong(){
+			return $long;
+		}
+		
+		public function getYelp(){
+			return $yelp;
+		}
+		
+		public function getTwit(){
+			return $twit;
+		}
 	}
 
 ?>
