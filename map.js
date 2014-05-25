@@ -1,4 +1,5 @@
 function initialize() {
+  geocoder = new google.maps.Geocoder();
   var mapOptions = {
     center: new google.maps.LatLng(-33.8688, 151.2195),
     zoom: 13
@@ -68,8 +69,8 @@ function initialize() {
       autocomplete.setTypes(types);
     });
   }
-
   setupClickListener('changetype-geocode', ['geocode']);
 }
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
