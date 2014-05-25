@@ -4,36 +4,6 @@
 	require_once('yelpTest.php');
 	require_once('twitterCall.php');
 	
-	// if ($_POST['latitude'] != null) {
-		// $lat= $_POST['latitude'];
-		// header("Location: http://localhost:8888/multiple_results.php?lat=".$lat."&long=".$lat);
-	// }
-// 	
-	//if Post has data inside it...
-	// if (isset($_POST)) {
-		
-// 		
-		//check to make sure that the latitude is not null
-		// if($_POST['latitude'] == null){
-			// $errorArray[]='latitude missing';
-		// }else{
-			// $lat= $_POST['latitude']; 
-		// }
-// 		
-		// //check to make sure that the longitude is not null
-		// if($_POST['longitude'] == null){
-			// $errorArray[]='longitude missing';
-		// }else{
-			// $long= $_POST['longitude'];
-		// } 
-		// if(count($errorArray)==0){
-			// header("Location: multiple_results.php?lat=".$lat."&long=".$long);
-			// die();	
-		// }
-	// //if Post is empty...	
-	// }
-	
-	
 	//if there is a longitude or latitude already existing (ie user has inputted a location)...
 	if(isset($_GET['lat']) && isset($_GET['long'])){
 		//set local variables with get variables
